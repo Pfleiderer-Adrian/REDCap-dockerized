@@ -3,48 +3,53 @@ services:
   redcap-web:
     build:
       context: ./Webservice
-      args:
-        XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
-        XNAT_DATASOURCE_URL: 'jdbc:postgresql://xnat-db/xnat'
-        XNAT_DATASOURCE_USERNAME: 'xnat'
-        XNAT_DATASOURCE_PASSWORD: 'xnat'
-        XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
-        TOMCAT_XNAT_FOLDER: ROOT
-        XNAT_ROOT: /data/xnat
-        XNAT_HOME: /data/xnat/home
-    ports:
-      - "8081:8080"
-      - "8000:8000"
-      - "8104:8104"
-    volumes:
-      - /Xnat-Ubuntu/sharedData:/data/xnat/sharedData
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /data/xnat/archive:/data/xnat/archive
-      - /data/xnat/build:/data/xnat/build
-    depends_on:
-      - xnat-db
     environment:
-      - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-      - XNAT_HOME=/data/xnat/home
-
+      MYSQL_ROOT_PASSWORD: 'hguyFtgfR4r9R4r7'
+      MYSQL_DATABASE: 'redcap'
+      MYSQL_USER: 'redcap_dbuser'
+      MYSQL_PASSWORD: 'hguyFt6S95dgfR4ryb'
+      #  XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
+      #  XNAT_DATASOURCE_URL: 'jdbc:postgresql://xnat-db/xnat'
+      #  XNAT_DATASOURCE_USERNAME: 'xnat'
+      #  XNAT_DATASOURCE_PASSWORD: 'xnat'
+      #  XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
+      #  TOMCAT_XNAT_FOLDER: ROOT
+      #  XNAT_ROOT: /data/xnat
+      #  XNAT_HOME: /data/xnat/home
+    ports:
+      - "80:80"
+    #volumes:
+      #- /Xnat-Ubuntu/sharedData:/data/xnat/sharedData
+      #- /var/run/docker.sock:/var/run/docker.sock
+      #- /data/xnat/archive:/data/xnat/archive
+      #- /data/xnat/build:/data/xnat/build
+    depends_on:
+      - redcap-db
+    #environment:
+      #- CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      #- XNAT_HOME=/data/xnat/home
+    expose:
+      - "80"
   redcap-db:
     build: ./MariaDB
     expose:
       - "3306"
     environment:
-        MYSQL_ROOT_PASSWORD: hguyFtgfR4r9R4r76
-        MYSQL_DATABASE: wordpressdb
-        MYSQL_USER: wordpressuser
-        MYSQL_PASSWORD: hguyFt6S95dgfR4ryb
+         MYSQL_ROOT_PASSWORD: 'hguyFtgfR4r9R4r7'
+         MYSQL_DATABASE: 'redcap'
+         MYSQL_USER: 'redcap_dbuser'
+         MYSQL_PASSWORD: 'hguyFt6S95dgfR4ryb'
     volumes:
     - /data/example/mysql:/var/lib/mysql
     restart: always
-  
-  redcap-nginx:
-    build: ./Nginx
-    ports:
-      - "80:80"
-    expose:
-      - "80"
-    links:
-      - redcap-web
+
+  #redcap-nginx:
+  #  build: ./Nginx
+  #  ports:
+  #    - "80:80"
+  #  expose:
+  #    - "80"
+  #  depends_on:
+  #    - redcap-web
+  #  links:
+  #    - redcap-web
