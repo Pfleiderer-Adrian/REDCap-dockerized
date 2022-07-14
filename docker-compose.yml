@@ -1,13 +1,20 @@
-version: '2'
+version: '3.3'
 services:
   redcap-web:
     build:
       context: ./Webservice
+      #args:
+         #MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+         #MYSQL_DATABASE: ${MYSQL_DATABASE}
+         #MYSQL_USER: ${MYSQL_USER}
+         #MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+         #APACHE_DOCUMENT_ROOT: /var/www/html/redcap
     environment:
-      MYSQL_ROOT_PASSWORD: 'hguyFtgfR4r9R4r7'
-      MYSQL_DATABASE: 'redcap'
-      MYSQL_USER: 'redcap_dbuser'
-      MYSQL_PASSWORD: 'hguyFt6S95dgfR4ryb'
+         APACHE_DOCUMENT_ROOT: /var/www/html/redcap
+         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+         MYSQL_DATABASE: ${MYSQL_DATABASE}
+         MYSQL_USER: ${MYSQL_USER}
+         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       #  XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
       #  XNAT_DATASOURCE_URL: 'jdbc:postgresql://xnat-db/xnat'
       #  XNAT_DATASOURCE_USERNAME: 'xnat'
@@ -23,8 +30,6 @@ services:
       #- /var/run/docker.sock:/var/run/docker.sock
       #- /data/xnat/archive:/data/xnat/archive
       #- /data/xnat/build:/data/xnat/build
-    depends_on:
-      - redcap-db
     #environment:
       #- CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
       #- XNAT_HOME=/data/xnat/home
@@ -35,13 +40,15 @@ services:
     expose:
       - "3306"
     environment:
-         MYSQL_ROOT_PASSWORD: 'hguyFtgfR4r9R4r7'
-         MYSQL_DATABASE: 'redcap'
-         MYSQL_USER: 'redcap_dbuser'
-         MYSQL_PASSWORD: 'hguyFt6S95dgfR4ryb'
+         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+         MYSQL_DATABASE: ${MYSQL_DATABASE}
+         MYSQL_USER: ${MYSQL_USER}
+         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
     - /data/example/mysql:/var/lib/mysql
     restart: always
+    links:
+      - redcap-web:redcap-db
 
   #redcap-nginx:
   #  build: ./Nginx

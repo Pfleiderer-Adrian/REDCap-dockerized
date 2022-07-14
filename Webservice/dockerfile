@@ -10,13 +10,13 @@ RUN			apt-get update && \
 COPY src/ /var/www/html
 RUN	unzip /var/www/html/*.zip
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/redcap
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+#ARG MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#ARG MYSQL_DATABASE: ${MYSQL_DATABASE}
+#ARG MYSQL_USER: ${MYSQL_USER}
+#ARG MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-RUN 		sed -i "s|your_mysql_host_name|localhost:3306|g" /var/www/html/redcap/database.php && \
- 				sed -i "s|your_mysql_db_name|$MYSQL_DATABASE|g" /var/www/html/redcap/database.php && \
- 				sed -i "s|your_mysql_db_username|$MYSQL_USER|g" /var/www/html/redcap/database.php && \
-				sed -i "s|your_mysql_db_password|$MYSQL_PASSWORD|g" /var/www/html/redcap/database.php
+COPY make_config.sh /
+RUN chmod +x /make_config.sh
+ENTRYPOINT ["/make_config.sh"]
 
 CMD apachectl -D FOREGROUND
