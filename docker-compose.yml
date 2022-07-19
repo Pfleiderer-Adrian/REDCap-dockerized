@@ -35,10 +35,13 @@ services:
       #- XNAT_HOME=/data/xnat/home
     expose:
       - "80"
+    container_name: redcap-web
   redcap-db:
-    build: ./MariaDB
+    image: yobasystems/alpine-mariadb
     expose:
       - "3306"
+    ports:
+      - "3306:3306"
     environment:
          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
          MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -47,8 +50,7 @@ services:
     volumes:
     - /data/example/mysql:/var/lib/mysql
     restart: always
-    links:
-      - redcap-web:redcap-db
+    container_name: redcap-db
 
   #redcap-nginx:
   #  build: ./Nginx
