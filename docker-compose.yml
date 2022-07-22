@@ -23,9 +23,11 @@ services:
       #  TOMCAT_XNAT_FOLDER: ROOT
       #  XNAT_ROOT: /data/xnat
       #  XNAT_HOME: /data/xnat/home
+    depends_on:
+      - redcap-db
     ports:
       - "80:80"
-    #volumes:
+    #volumes:mariadb
       #- /Xnat-Ubuntu/sharedData:/data/xnat/sharedData
       #- /var/run/docker.sock:/var/run/docker.sock
       #- /data/xnat/archive:/data/xnat/archive
@@ -37,18 +39,14 @@ services:
       - "80"
     container_name: redcap-web
   redcap-db:
-    image: yobasystems/alpine-mariadb
+    image: mariadb
     expose:
       - "3306"
-    ports:
-      - "3306:3306"
     environment:
-         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-         MYSQL_DATABASE: ${MYSQL_DATABASE}
-         MYSQL_USER: ${MYSQL_USER}
-         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-    - /data/example/mysql:/var/lib/mysql
+         MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+         MARIADB_DATABASE: ${MYSQL_DATABASE}
+         MARIADB_USER: ${MYSQL_USER}
+         MARIADB_PASSWORD: ${MYSQL_PASSWORD}
     restart: always
     container_name: redcap-db
 
