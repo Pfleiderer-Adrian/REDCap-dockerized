@@ -5,18 +5,14 @@ RUN			apt-get update && \
 				apt-get install -y curl && \
 				apt-get install -y unzip && \
 				apt-get install nano && \
+				apt-get install -y mariadb-client && \
 				docker-php-ext-install mysqli
 
 COPY src/ /var/www/html
+COPY redcap.sql /
 RUN	unzip /var/www/html/*.zip
-
-#ARG MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-#ARG MYSQL_DATABASE: ${MYSQL_DATABASE}
-#ARG MYSQL_USER: ${MYSQL_USER}
-#ARG MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
 COPY make_config.sh /
 RUN chmod +x /make_config.sh
 ENTRYPOINT ["/make_config.sh"]
-
 CMD apachectl -D FOREGROUND
