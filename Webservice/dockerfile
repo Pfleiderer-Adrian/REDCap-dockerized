@@ -4,15 +4,35 @@ MAINTAINER Adrian Pfleiderer <github@adrian-pfleiderer.de>
 RUN			apt-get update && \
 				apt-get install -y curl && \
 				apt-get install -y unzip && \
-				apt-get install nano && \
+				apt-get install -y nano && \
 				apt-get install -y mariadb-client && \
-				docker-php-ext-install mysqli
+				apt-get install -y libzip-dev && \
+				apt-get install -y libpng-dev && \
+				apt-get install -y cron && \
+				docker-php-ext-install mysqli && \
+				docker-php-ext-install gd && \
+				docker-php-ext-install zip
 
-COPY src/ /var/www/html
-COPY redcap.sql /
+RUN mkdir /var/install_scripts
+RUN mkdir /var/redcap_user_files
+
+COPY src/*.zip /var/www/html
+COPY redcap.sql var/install_scripts
 RUN	unzip /var/www/html/*.zip
 
-COPY make_config.sh /
-RUN chmod +x /make_config.sh
-ENTRYPOINT ["/make_config.sh"]
-CMD apachectl -D FOREGROUND
+RUN chmod 777 /var/www/html/redcap/modules
+RUN chmod 777 /var/www/html/redcap/edocs
+RUN chmod 777 /var/www/html/redcap/temp
+
+RUN cp /var/www/html/redcap/edocs/* /var/redcap_user_files
+
+RUN > /var/spool/cron/crontabs/root
+RUN echo "* * * * * /usr/local/bin/php /var/www/html/redcap/cron.php > /dev/null" >> /var/spool/cron/crontabs/root
+RUN echo "" >> /var/spool/cron/crontabs/root
+
+COPY src/php.ini /usr/local/etc/php
+
+COPY make_config.sh /var/install_scripts
+RUN chmod +x /var/install_scripts/make_config.sh
+ENTRYPOINT ["/var/install_scripts/make_config.sh"]
+CMD cron && apachectl -D FOREGROUND

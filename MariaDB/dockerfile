@@ -1,2 +1,10 @@
-FROM yobasystems/alpine-mariadb
+FROM mariadb
 MAINTAINER Adrian Pfleiderer <github@adrian-pfleiderer.de>
+
+RUN	apt-get update && \
+    apt-get install -y nano
+
+RUN echo "optimizer_switch=rowid_filter=OFF" >> /etc/mysql/my.cnf
+RUN echo "query_cache_size=16777216" >> /etc/mysql/my.cnf
+RUN echo "query_cache_type=1" >> /etc/mysql/my.cnf
+RUN echo "query_cache_limit=16777216" >> /etc/mysql/my.cnf

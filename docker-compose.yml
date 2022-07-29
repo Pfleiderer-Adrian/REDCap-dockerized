@@ -45,7 +45,8 @@ services:
       - "80"
     container_name: redcap-web
   redcap-db:
-    image: mariadb
+    build:
+      context: ./MariaDB
     expose:
       - "3306"
     environment:

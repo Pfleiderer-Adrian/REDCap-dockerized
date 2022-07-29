@@ -21,3 +21,5 @@ UPDATE redcap_config SET value = 'CONTACT_EMAIL' WHERE field_name = 'project_con
 UPDATE redcap_config SET value = 'INSTITUTION' WHERE field_name = 'institution';
 UPDATE redcap_config SET value = 'DEPARTMENT' WHERE field_name = 'site_org_type';
 UPDATE redcap_config SET value = '/var/www/html/redcap/hook_functions.php' WHERE field_name = 'hook_functions_file';
+
+UPDATE redcap_config SET value = '/var/redcap_user_files' WHERE field_name = 'edoc_path';
