@@ -1,5 +1,4 @@
 # Easy REDCap
----
 ## A simple Dockerized REDCap system with a automated installation.
 ## What is RedCap?
 REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
