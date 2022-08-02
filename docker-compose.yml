@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   redcap-web:
+    env_file: ./.env
     build:
       context: ./Webservice
       #args:
@@ -33,8 +34,10 @@ services:
       - redcap-db
     ports:
       - "80:80"
-    #volumes:mariadb
-      #- /Xnat-Ubuntu/sharedData:/data/xnat/sharedData
+      - "443:443"
+    volumes:
+      - ./Webservice/ssl/crt:/etc/ssl/certs
+      - ./Webservice/ssl/key:/etc/ssl/private
       #- /var/run/docker.sock:/var/run/docker.sock
       #- /data/xnat/archive:/data/xnat/archive
       #- /data/xnat/build:/data/xnat/build

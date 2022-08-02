@@ -1,6 +1,9 @@
 FROM php:7.4-apache
 MAINTAINER Adrian Pfleiderer <github@adrian-pfleiderer.de>
 
+# this docerfile creates the webserver-part of the redcap system
+
+# install basic tools for the webserver
 RUN			apt-get update && \
 				apt-get install -y curl && \
 				apt-get install -y unzip && \
@@ -13,26 +16,41 @@ RUN			apt-get update && \
 				docker-php-ext-install gd && \
 				docker-php-ext-install zip
 
+# create folder structure
 RUN mkdir /var/install_scripts
 RUN mkdir /var/redcap_user_files
 
+# copy src files into the container
 COPY src/*.zip /var/www/html
-COPY redcap.sql var/install_scripts
+COPY src/redcap.sql /var/install_scripts
+COPY src/php.ini /usr/local/etc/php
+
+# unpack the redcap source-files
 RUN	unzip /var/www/html/*.zip
 
+# change folder permissions
 RUN chmod 777 /var/www/html/redcap/modules
 RUN chmod 777 /var/www/html/redcap/edocs
 RUN chmod 777 /var/www/html/redcap/temp
+RUN chmod 777 /var/redcap_user_files
 
+# SSL activation
+RUN a2enmod ssl
+RUN a2enmod socache_shmcb
+RUN sed -i 's|/etc/ssl/certs/ssl-cert-snakeoil.pem|/etc/ssl/certs/redcap.crt|g' /etc/apache2/sites-available/default-ssl.conf
+RUN sed -i 's|/etc/ssl/private/ssl-cert-snakeoil.key|/etc/ssl/private/redcap.key|g' /etc/apache2/sites-available/default-ssl.conf
+RUN a2ensite default-ssl
+
+# copy edocs files to the local file folder (better security)
 RUN cp /var/www/html/redcap/edocs/* /var/redcap_user_files
 
-RUN > /var/spool/cron/crontabs/root
-RUN echo "* * * * * /usr/local/bin/php /var/www/html/redcap/cron.php > /dev/null" >> /var/spool/cron/crontabs/root
-RUN echo "" >> /var/spool/cron/crontabs/root
+# add the redcap cronjob
+RUN (crontab -l 2>/dev/null; echo "* * * * * /usr/local/bin/php /var/www/html/redcap/cron.php > /dev/null") | crontab -
 
-COPY src/php.ini /usr/local/etc/php
-
+# copy install_script to container and execute the script
 COPY make_config.sh /var/install_scripts
 RUN chmod +x /var/install_scripts/make_config.sh
 ENTRYPOINT ["/var/install_scripts/make_config.sh"]
+
+# run apache2
 CMD cron && apachectl -D FOREGROUND

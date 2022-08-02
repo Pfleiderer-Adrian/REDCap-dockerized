@@ -1,9 +1,13 @@
 FROM mariadb
 MAINTAINER Adrian Pfleiderer <github@adrian-pfleiderer.de>
 
+# this dockerfile creates the database container
+
+# get some updates
 RUN	apt-get update && \
     apt-get install -y nano
 
+# set some redcap secific values for the database
 RUN echo "optimizer_switch=rowid_filter=OFF" >> /etc/mysql/my.cnf
 RUN echo "query_cache_size=16777216" >> /etc/mysql/my.cnf
 RUN echo "query_cache_type=1" >> /etc/mysql/my.cnf
