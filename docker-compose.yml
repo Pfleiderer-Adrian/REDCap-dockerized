@@ -1,15 +1,11 @@
 version: '3.3'
 services:
+
+# compose section for the redcap webservice
   redcap-web:
     env_file: ./.env
     build:
       context: ./Webservice
-      #args:
-         #MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-         #MYSQL_DATABASE: ${MYSQL_DATABASE}
-         #MYSQL_USER: ${MYSQL_USER}
-         #MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-         #APACHE_DOCUMENT_ROOT: /var/www/html/redcap
     environment:
          APACHE_DOCUMENT_ROOT: /var/www/html/redcap
          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -22,36 +18,27 @@ services:
          DEPARTMENT: ${DEPARTMENT}
          CONTACT_EMAIL: ${CONTACT_EMAIL}
          ADMINISTRATOR_NAME: ${ADMINISTRATOR_NAME}
-      #  XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
-      #  XNAT_DATASOURCE_URL: 'jdbc:postgresql://xnat-db/xnat'
-      #  XNAT_DATASOURCE_USERNAME: 'xnat'
-      #  XNAT_DATASOURCE_PASSWORD: 'xnat'
-      #  XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
-      #  TOMCAT_XNAT_FOLDER: ROOT
-      #  XNAT_ROOT: /data/xnat
-      #  XNAT_HOME: /data/xnat/home
     depends_on:
       - redcap-db
+# open https ports
     ports:
       - "80:80"
       - "443:443"
+# merge key and certificate folders (local <-> container)
     volumes:
       - ./Webservice/ssl/crt:/etc/ssl/certs
       - ./Webservice/ssl/key:/etc/ssl/private
-      #- /var/run/docker.sock:/var/run/docker.sock
-      #- /data/xnat/archive:/data/xnat/archive
-      #- /data/xnat/build:/data/xnat/build
-    #environment:
-      #- CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-      #- XNAT_HOME=/data/xnat/home
     expose:
       - "80"
     container_name: redcap-web
+
+# compose section for the database
   redcap-db:
     build:
       context: ./MariaDB
     expose:
       - "3306"
+# set your specified values
     environment:
          MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
          MARIADB_DATABASE: ${MYSQL_DATABASE}
@@ -59,14 +46,3 @@ services:
          MARIADB_PASSWORD: ${MYSQL_PASSWORD}
     restart: always
     container_name: redcap-db
-
-  #redcap-nginx:
-  #  build: ./Nginx
-  #  ports:
-  #    - "80:80"
-  #  expose:
-  #    - "80"
-  #  depends_on:
-  #    - redcap-web
-  #  links:
-  #    - redcap-web
