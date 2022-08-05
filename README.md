@@ -29,7 +29,7 @@ In this project we managed the several container throw the docker-compose framew
 ## Installation
 First, download or clone the repository:
 ```sh
-sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
+sudo git clone https://github.com/Pfleiderer-Adrian/REDCap-dockerized.git
 ```  
 
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
