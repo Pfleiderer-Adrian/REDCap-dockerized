@@ -1,4 +1,4 @@
-<img src="logo.png" alt="HTML ERROR" style="max-width: 1000px;"><br><h2>Why a Dockerized installation?</h2>To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easily testing REDCap without the challenging installation process.
+<img src="logo.png" alt="HTML ERROR" style="max-width: 1000px;"><br><h2>Why a dockerized installation?</h2>To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easily testing REDCap without the challenging installation process.
 > Note: This is not a offical REDCap Repository. Its a community based project. You need the offical REDCap permissions and source files to run REDCap. This repository contains no source files from REDCap.
 
 ## What is REDCap?
