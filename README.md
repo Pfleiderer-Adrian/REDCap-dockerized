@@ -1,6 +1,6 @@
-<img src="logo2.png" alt="HTML ERROR" style="max-width: 1000px;"><br><h2>Why a Dockerized installation?</h2>To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easly testing REDCap without the callanging installation process.
+<img src="logo.png" alt="HTML ERROR" style="max-width: 1000px;"><br><h2>Why a Dockerized installation?</h2>To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easily testing REDCap without the challenging installation process.
 > Note: This is not a offical REDCap Repository. Its a community based project. You need the offical REDCap permissions and source files to run REDCap.
-<h2>What is RedCap?</h2>
+<h2>What is REDCap?</h2>
 REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
 
 ## Already implemented Features
