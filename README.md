@@ -51,7 +51,7 @@ sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_RED
 Last step is to edit the .env file and set the nessecery credentials with a text editor.
 <br/>
 | Value | Description | Change necessary? |
-| ----- | ------ | ----- |
+| ------------- | ------------- | ------------- |
 | MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
 | MYSQL_DATABASE | The database name for REDCap | NO |
 | MYSQL_USER | The database user for the application | NO |
@@ -62,6 +62,7 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 | DEPARTMENT | Your department name | NO for development. YES for production |
 | CONTACT_EMAIL | Your admin email | NO for development. YES for production |
 | ADMINISTRATOR_NAME | Your admin name | NO for development. YES for production |
+
 > NOTE: All values must be set. No empty values allowed.
 
 <br>
