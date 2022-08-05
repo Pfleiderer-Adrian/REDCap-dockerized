@@ -50,6 +50,7 @@ sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_RED
 <br/>
 Last step is to edit the .env file and set the nessecery credentials with a text editor.
 <br/>
+
 | Value | Description | Change necessary? |
 | ------------- | ------------- | ------------- |
 | MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
