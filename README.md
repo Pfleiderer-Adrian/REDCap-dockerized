@@ -1,4 +1,4 @@
-<img src="logo.png" alt="HTML ERROR" title="RAPID REDCap" width="538" height="326">
+<img src="logo.png" alt="HTML ERROR" style="display: inline-block; margin: 50% auto; max-width: 300px">
 
 # Easy REDCap
 ## A simple Dockerized REDCap system with a automated installation.
