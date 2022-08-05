@@ -29,13 +29,13 @@ In this project we managed the several container throw the docker-compose framew
 First, download or clone the repository:
 ```sh
 sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
-```
+```  
 
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
 ```sh
 cd /path/to/Dockerized_REDCap/src
 sudo cp /path/to/sourcefiles/redcapxx.x.x.zip /path/to/Dockerized_REDCap/src
-```
+```  
 
 For the SSL configuration we need to add the SSL certificate into the **Webservice/ssl** folder in the repository. The key must be stored in the key folder and the certificate in the crt folder.
 If you don't already have an SSL certificate and a key, you can easily create one for development purposes (not production!!).
@@ -43,12 +43,12 @@ With openssl:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
-```
+```  
 
 Last step is to edit the .env file and set the nessecery credentials with a text editor.
 
-
-
+  
+  
 | Value | Description | Change necessary? |
 | ------------- | ------------- | ------------- |
 | MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
