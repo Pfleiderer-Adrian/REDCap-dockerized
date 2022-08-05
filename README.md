@@ -5,7 +5,7 @@ To create a complete REDCap System you need to install, initialize and configure
 
 
   
-  
+ <br><br>
   
 <h3>What is RedCap?</h3>
 REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
