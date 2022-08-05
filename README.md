@@ -10,8 +10,8 @@ REDCap is a secure web application for building and managing online surveys and 
 - SSL out of the box
 
 ## Project structure
-In the Folder **Webservice** are all components for building the Webapplication. The Web-**Dockerfile** is based on the [official php docker container](https://hub.docker.com/_/php) with a apache2 integration. The **src** Folder contains all scripts for the automated installation. Here you have to insert the offical REDCap Source files as a .zip package. For the SSL konfiguration you need the **ssl** Folder. Your own key and the associated certificate must be inserted in the subfolders.<br>
-The Folder **MariaDB** are all components for building the Database. The DB-**Dockerfile** is based on the [official MariaDB docker container](https://hub.docker.com/_/mariadb)<br>
+In the Folder **Webservice** are all components for building the Webapplication. The Web-**Dockerfile** is based on the [official php docker container](https://hub.docker.com/_/php) with a apache2 integration. The **src** Folder contains all scripts for the automated installation. Here you have to insert the offical REDCap Source files as a .zip package. For the SSL konfiguration you need the **ssl** Folder. Your own key and the associated certificate must be inserted in the subfolders.<br><br>
+The Folder **MariaDB** are all components for building the Database. The DB-**Dockerfile** is based on the [official MariaDB docker container](https://hub.docker.com/_/mariadb)<br><br>
 The most important file is the .env file which contains all private variables for the REDCap system. These must be set before the start.
 
 ## Requirements
