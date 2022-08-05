@@ -26,10 +26,11 @@ To start the REDCap docker container, Docker is required on the host system. For
 In this project we managed the several container throw the docker-compose framework. For the installation follow the [official Docker Compose installation](https://docs.docker.com/compose/install/)
 
 ## Installation
-The first thing to do is download or clone the repository:
+First, download or clone the repository:
 ```sh
 sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
 ```
+
 <br>
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
 ```sh
