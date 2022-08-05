@@ -1,6 +1,6 @@
 |||
 | ------------- | ------------- |
-| <img src="logo.png" alt="HTML ERROR" width="435" height="264"  align="left"> | <h3> Why a Dockerized installation? </h3> To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easly testing REDCap without the callanging installation process. |
+| <img src="logo.png" alt="HTML ERROR" width="435" height="264"  align="left"> | <h3> Why a Dockerized installation? </h3><br> To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easly testing REDCap without the callanging installation process. |
  
  <br><br><br>
 <h3>What is RedCap?</h3>
