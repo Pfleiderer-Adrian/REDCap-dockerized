@@ -31,14 +31,14 @@ First, download or clone the repository:
 sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
 ```
 
-<br>
+<br/>
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
 ```sh
 cd /path/to/Dockerized_REDCap/src
 sudo cp /path/to/sourcefiles/redcapxx.x.x.zip /path/to/Dockerized_REDCap/src
 ```
 
-<br>
+<br/>
 For the SSL configuration we need to add the SSL certificate into the **Webservice/ssl** folder in the repository. The key must be stored in the key folder and the certificate in the crt folder.
 If you don't already have an SSL certificate and a key, you can easily create one for development purposes (not production!!).
 With openssl:
