@@ -62,13 +62,12 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 
 > NOTE: All values must be set. No empty values allowed.
 
-
+<br></br>
 Finally we can build and execute our Image:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo docker-compose up -d --build
 ```
-  
 After the image are build successfully please wait a minute. After that you can check [your URL](https://localhost/redcap) and have a fully working REDCap system.
 
 ## Access a component with a shell
