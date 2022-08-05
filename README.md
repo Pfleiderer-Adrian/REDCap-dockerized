@@ -61,7 +61,7 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 | ADMINISTRATOR_NAME | Your admin name | NO for development. YES for production |
 
 > NOTE: All values must be set. No empty values allowed.
-<br></br>
+
 Finally we can build and execute our Image:
 ```sh
 cd /path/to/Dockerized_REDCap
