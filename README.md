@@ -17,7 +17,7 @@ The most important file is the .env file which contains all private variables fo
 
 ## Requirements
 - The REDCap Source Files:<br>
-REDCap is a closed source project. To get access the source files you have to request them from [official REDCap Website](https://projectredcap.org/) first.
+REDCap is a closed source project. To get access to the source files you have to request them from [official REDCap Website](https://projectredcap.org/) first.
 
 - Docker:<br>
 To start the REDCap docker container, Docker is required on the host system. For the installation follow the [official Docker installation](https://docs.docker.com/get-docker/).
