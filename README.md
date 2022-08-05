@@ -11,18 +11,18 @@ REDCap is a secure web application for building and managing online surveys and 
 - SSL out of the box
 
 ## Project structure
-In the Folder **Webservice** are all components for building the Webapplication. The Web-**Dockerfile** is based on the [official php docker container](https://hub.docker.com/_/php) with a apache2 integration. The **src** Folder contains all scripts for the automated installation. Here you have to insert the offical REDCap Source files as a .zip package. For the SSL konfiguration you need the **ssl** Folder. Your own key and the associated certificate must be inserted in the subfolders.<br><br>
-The Folder **MariaDB** contains all components for building the Database. The DB-**Dockerfile** is based on the [official MariaDB docker container](https://hub.docker.com/_/mariadb)<br><br>
+In the Folder **Webservice** are all components for building the Webapplication. The Web-**Dockerfile** is based on the [official php docker container](https://hub.docker.com/_/php) with a apache2 integration. The **src** Folder contains all scripts for the automated installation. Here you have to insert the offical REDCap Source files as a .zip package. For the SSL konfiguration you need the **ssl** Folder. Your own key and the associated certificate must be inserted in the subfolders.<br></br>
+The Folder **MariaDB** contains all components for building the Database. The DB-**Dockerfile** is based on the [official MariaDB docker container](https://hub.docker.com/_/mariadb)<br></br>
 The most important file is the .env file which contains all private variables for the REDCap system. These must be set before the start.
 
 ## Requirements
-- The REDCap Source Files:<br>
+- **The REDCap Source Files:**<br>
 REDCap is a closed source project. To get access to the source files you have to request them from [official REDCap Website](https://projectredcap.org/) first.
 
-- Docker:<br>
+- **Docker:**<br>
 To start the REDCap docker container, Docker is required on the host system. For the installation follow the [official Docker installation](https://docs.docker.com/get-docker/).
 
-- Docker-compose:<br>
+- **Docker-compose:**<br>
 In this project we managed the several container throw the docker-compose framework. For the installation follow the [official Docker Compose installation](https://docs.docker.com/compose/install/)
 
 ## Installation
@@ -61,6 +61,7 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 | ADMINISTRATOR_NAME | Your admin name | NO for development. YES for production |
 
 > NOTE: All values must be set. No empty values allowed.
+
 <br></br>
 Finally we can build and execute our Image:
 ```sh
