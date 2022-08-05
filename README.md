@@ -30,13 +30,13 @@ First, download or clone the repository:
 ```sh
 sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
 ```  
-<br></br>
+
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
 ```sh
 cd /path/to/Dockerized_REDCap/src
 sudo cp /path/to/sourcefiles/redcapxx.x.x.zip /path/to/Dockerized_REDCap/src
 ```  
-<br></br>
+
 For the SSL configuration we need to add the SSL certificate into the **Webservice/ssl** folder in the repository. The key must be stored in the key folder and the certificate in the crt folder.
 If you don't already have an SSL certificate and a key, you can easily create one for development purposes (not production!!).
 With openssl:
@@ -44,7 +44,7 @@ With openssl:
 cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
 ```
-<br></br>
+
 Last step is to edit the .env file and set the nessecery credentials with a text editor.  
 
 | Value | Description | Change necessary? |
@@ -62,7 +62,6 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 
 > NOTE: All values must be set. No empty values allowed.
 
-<br></br>
 Finally we can build and execute our Image:
 ```sh
 cd /path/to/Dockerized_REDCap
@@ -76,12 +75,12 @@ If you want to change something in the webservice docker image you can run:
 cd /path/to/Dockerized_REDCap
 sudo docker exec -it redcap-web bash
 ```
-<br></br>
+
 If you want to change something in the database docker image you can run:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo docker exec -it redcap-db bash
 ```
-<br></br>
+
 ## Upcoming Features
 - mailing service (currently not working out-of-the-box)
