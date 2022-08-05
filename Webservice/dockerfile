@@ -22,8 +22,8 @@ RUN mkdir /var/redcap_user_files
 
 # copy src files into the container
 COPY src/*.zip /var/www/html
-COPY src/redcap.sql /var/install_scripts
-COPY src/php.ini /usr/local/etc/php
+COPY scripts/redcap.sql /var/install_scripts
+COPY scripts/php.ini /usr/local/etc/php
 
 # unpack the redcap source-files
 RUN	unzip /var/www/html/*.zip
@@ -51,7 +51,7 @@ RUN cp /var/www/html/redcap/edocs/* /var/redcap_user_files
 RUN (crontab -l 2>/dev/null; echo "* * * * * /usr/local/bin/php /var/www/html/redcap/cron.php > /dev/null") | crontab -
 
 # copy install_script to container and execute the script
-COPY make_config.sh /var/install_scripts
+COPY scripts/make_config.sh /var/install_scripts
 RUN chmod +x /var/install_scripts/make_config.sh
 ENTRYPOINT ["/var/install_scripts/make_config.sh"]
 
