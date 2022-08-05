@@ -94,4 +94,4 @@ This work uses and is based on the great REDCap software. Please look at these p
 
 [PA Harris, R Taylor, R Thielke, J Payne, N Gonzalez, JG. Conde, Research electronic data capture (REDCap) – A metadata-driven methodology and workflow process for providing translational research informatics support, J Biomed Inform. 2009 Apr;42(2):377-81.](http://www.sciencedirect.com/science/article/pii/S1532046408001226)
 
-PA Harris, R Taylor, BL Minor, V Elliott, M Fernandez, L O’Neal, L McLeod, G Delacqua, F Delacqua, J Kirby, SN Duda, REDCap Consortium, The REDCap consortium: Building an international community of software partners, J Biomed Inform. 2019 May 9 [doi: 10.1016/j.jbi.2019.103208](https://www.sciencedirect.com/science/article/pii/S1532046419301261)
+[PA Harris, R Taylor, BL Minor, V Elliott, M Fernandez, L O’Neal, L McLeod, G Delacqua, F Delacqua, J Kirby, SN Duda, REDCap Consortium, The REDCap consortium: Building an international community of software partners, J Biomed Inform. 2019 May 9 doi: 10.1016/j.jbi.2019.103208](https://www.sciencedirect.com/science/article/pii/S1532046419301261)
