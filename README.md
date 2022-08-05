@@ -1,8 +1,7 @@
-<p float="left">
-<img src="logo.png" alt="HTML ERROR" width="538" height="326">
+:-------------------------:|:-------------------------:
+!<img src="logo.png" alt="HTML ERROR" width="538" height="326">
 
-# Easy REDCap
-## A simple Dockerized REDCap system with a automated installation.
+!## A simple Dockerized REDCap system with a automated installation.
 ## What is RedCap?
 REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
 </p>
