@@ -1,9 +1,12 @@
 
 <img src="logo.png" alt="HTML ERROR" width="435" height="264"  align="left">
-### Why a Dockerized installation?
+<h3> Why a Dockerized installation? <h4>
 To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easly testing REDCap without the callanging installation process.
 
 
+  
+  
+  
 <h3>What is RedCap?</h3>
 REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
 
