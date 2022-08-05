@@ -1,9 +1,9 @@
 <img src="logo.png" alt="HTML ERROR" style="max-width: 1000px;"><br><h2>Why a Dockerized installation?</h2>To create a complete REDCap System you need to install, initialize and configure many subsystems. This Dockerized installation deliveres a complete fresh REDCap instance with only a few commands. You can use this for easily testing REDCap without the challenging installation process.
 > Note: This is not a offical REDCap Repository. Its a community based project. You need the offical REDCap permissions and source files to run REDCap.
 <h2>What is REDCap?</h2>
-REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations.
+REDCap is a secure web application for building and managing online surveys and databases. While REDCap can be used to collect virtually any type of data in any environment, it is specifically geared to support online and offline data capture for research studies and operations. Please visit the [offical Website](https://projectredcap.org/) for more information.
 
-## Already implemented Features
+## Already implemented features
 - complete Webservice installation
 - complete Database installation
 - permission handling
@@ -45,8 +45,8 @@ cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
 ```  
 <br></br>
-Last step is to edit the .env file and set the nessecery credentials with a text editor.
-<br></br>
+Last step is to edit the .env file and set the nessecery credentials with a text editor.  
+
 | Value | Description | Change necessary? |
 | ------------- | ------------- | ------------- |
 | MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
@@ -71,5 +71,20 @@ sudo docker-compose up -d --build
 <br></br>
 After the image are build successfully please wait a minute. After that you can check [your URL](https://localhost/redcap) and have a fully working REDCap system.
 
+## Access a component with a shell
+If you want to change something in the webservice docker image you can run:
+```sh
+cd /path/to/Dockerized_REDCap
+sudo docker exec -it redcap-web bash
+```
+<br></br>
+
+If you want to change something in the database docker image you can run:
+```sh
+cd /path/to/Dockerized_REDCap
+sudo docker exec -it redcap-db bash
+```
+<br></br>
+
 ## Upcoming Features
-- Mailing Service
+- mailing service (currently not working out-of-the-box)
