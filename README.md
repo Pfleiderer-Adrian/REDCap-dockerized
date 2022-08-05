@@ -26,25 +26,49 @@ To start the REDCap docker container, Docker is required on the host system. For
 In this project we managed the several container throw the docker-compose framework. For the installation follow the [official Docker Compose installation](https://docs.docker.com/compose/install/)
 
 ## Installation
-The first thing to do is download or clone the repository.
-
-Then the zipped source files from the REDCap Project have to be moved into the source folder.
-
-For the SSL configuration, the key must be stored in the key folder and the certificate in the crt folder.
-If you don't already have an SSL certificate, you can easily create one for development purposes.
-On Ubuntu with openssl:
+The first thing to do is download or clone the repository:
+```sh
+sudo git clone https://github.com/Pfleiderer-Adrian/Dockerized_REDCap
+```
+<br>
+Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
+```sh
+cd /path/to/Dockerized_REDCap/src
+sudo cp /path/to/sourcefiles/redcapxx.x.x.zip /path/to/Dockerized_REDCap/src
+```
+<br>
+For the SSL configuration we need to add the SSL certificate into the **Webservice/ssl** folder in the repository. The key must be stored in the key folder and the certificate in the crt folder.
+If you don't already have an SSL certificate and a key, you can easily create one for development purposes (not production!!).
+With openssl:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
 ```
+<br>
+Last step is to edit the .env file and set the nessecery credentials.
 
-Last step is to edit the .env file and set the desiered database credentials.
+| Value | Description | Change necessary? |
+| ----- | ------ | ----- |
+| MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
+| MYSQL_DATABASE | The database name for REDCap | NO |
+| MYSQL_USER | The database user for the application | NO |
+| MYSQL_PASSWORD | The password for the user | YES!!! |
+| REDCAP_BASE_URL | The url for your application. E.g. https://localhost/redcap for development | YES |
+| REDCAP_VERSION | The version of your source files. Name format: xx.x.x (only digets and dot) | YES |
+| INSTITUTION | Your instition name | NO for development. YES for production |
+| DEPARTMENT | Your department name | NO for development. YES for production |
+| CONTACT_EMAIL | Your admin email | NO for development. YES for production |
+| ADMINISTRATOR_NAME | Your admin name | NO for development. YES for production |
+> NOTE: All values must be set. No empty values allowed.
 
-Now we can build and execute our Image:
+<br>
+Finally we can build and execute our Image:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo docker-compose up -d --build
 ```
+<br>
+After the image are build successfully please wait a minute. After that you can check your URL and have a fully working REDCap system.
 
 ## Upcoming Features
 - Mailing Service
