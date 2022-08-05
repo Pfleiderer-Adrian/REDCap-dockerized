@@ -46,9 +46,10 @@ With openssl:
 cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
 ```
-<br>
-Last step is to edit the .env file and set the nessecery credentials.
 
+<br/>
+Last step is to edit the .env file and set the nessecery credentials with a text editor.
+<br/>
 | Value | Description | Change necessary? |
 | ----- | ------ | ----- |
 | MYSQL_ROOT_PASSWORD | The root password for your Database | YES!!! |
