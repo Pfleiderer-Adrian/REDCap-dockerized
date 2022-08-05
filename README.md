@@ -43,7 +43,7 @@ With openssl:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /Dockerized_REDCap/Webservice/ssl/key/redcap.key -out /Dockerized_REDCap/Webservice/ssl/crt/redcap.crt
-```  
+```
 <br></br>
 Last step is to edit the .env file and set the nessecery credentials with a text editor.  
 
@@ -61,7 +61,6 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 | ADMINISTRATOR_NAME | Your admin name | NO for development. YES for production |
 
 > NOTE: All values must be set. No empty values allowed.
-
 <br></br>
 Finally we can build and execute our Image:
 ```sh
@@ -78,13 +77,11 @@ cd /path/to/Dockerized_REDCap
 sudo docker exec -it redcap-web bash
 ```
 <br></br>
-
 If you want to change something in the database docker image you can run:
 ```sh
 cd /path/to/Dockerized_REDCap
 sudo docker exec -it redcap-db bash
 ```
 <br></br>
-
 ## Upcoming Features
 - mailing service (currently not working out-of-the-box)
