@@ -15,11 +15,14 @@ The Folder **MariaDB** contains all components for building the Database. The DB
 The most important file is the .env file which contains all private variables for the REDCap system. These must be set before the start.
 
 ## Requirements
-- The REDCap Source Files:
-REDCap is a ClosedSource Project. To get the source files you have to request them from Redcap first.
+- The REDCap Source Files:<br>
+REDCap is a closed source project. To get access the source files you have to request them from [official REDCap Website](https://projectredcap.org/) first.
 
-- Docker & Docker Compose :
-Docker and Docker-Compose must be installed on your system.
+- Docker:<br>
+To start the REDCap docker container, Docker is required on the host system. For the installation follow the [official Docker installation](https://docs.docker.com/get-docker/).
+
+- Docker-compose:<br>
+In this project we managed the several container throw the docker-compose framework. For the installation follow the [official Docker Compose installation](https://docs.docker.com/compose/install/)
 
 ## Installation
 The first thing to do is download or clone the repository.
