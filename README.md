@@ -34,8 +34,8 @@ sudo git clone https://github.com/Pfleiderer-Adrian/REDCap-dockerized.git
 
 Next, we need to add redcap's official source files (zipped) to the **Webservice/src** folder in the repository:
 ```sh
-cd /path/to/REDCap-dockerized/Webservice/src
-sudo cp /path/to/sourcefiles/redcapxx.x.x.zip /path/to/REDCap-dockerized/Webservice/src
+cd path/to/REDCap-dockerized/Webservice/src
+sudo cp path/to/sourcefiles/redcapxx.x.x.zip path/to/REDCap-dockerized/Webservice/src
 ```  
 
 For the SSL configuration we need to add the SSL certificate into the **Webservice/ssl** folder in the repository. The key must be stored in the key folder and the certificate in the crt folder.
@@ -43,7 +43,7 @@ If you don't already have an SSL certificate and a key, you can easily create on
 With openssl:
 ```sh
 cd /path/to/REDCap-dockerized
-sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout /REDCap-dockerized/Webservice/ssl/key/redcap.key -out /REDCap-dockerized/Webservice/ssl/crt/redcap.crt
+sudo openssl req -x509 -nodes -days 356 -newkey rsa:2048 -keyout REDCap-dockerized/Webservice/ssl/key/redcap.key -out REDCap-dockerized/Webservice/ssl/crt/redcap.crt
 ```
 
 Last step is to edit the .env file and set the nessecery credentials with a text editor.  
@@ -65,7 +65,7 @@ Last step is to edit the .env file and set the nessecery credentials with a text
 
 Finally we can build and execute our image:
 ```sh
-cd /path/to/REDCap-dockerized
+cd path/to/REDCap-dockerized
 sudo docker-compose up -d --build
 ```
 After the image are build successfully please wait a minute. After that you can check [your URL](https://localhost/redcap). You should see a fully working REDCap system. :)
@@ -73,13 +73,13 @@ After the image are build successfully please wait a minute. After that you can 
 ## Access a component with a shell
 If you want to change something in the webservice docker image you can run:
 ```sh
-cd /path/to/REDCap-dockerized
+cd path/to/REDCap-dockerized
 sudo docker exec -it redcap-web bash
 ```
 
 If you want to change something in the database docker image you can run:
 ```sh
-cd /path/to/REDCap-dockerized
+cd path/to/REDCap-dockerized
 sudo docker exec -it redcap-db bash
 ```
 
